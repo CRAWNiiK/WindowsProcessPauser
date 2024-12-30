@@ -94,54 +94,58 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 
     switch (uMsg) {
         case WM_CREATE: {
-            // Get the screen width and height
-            int screenWidth = GetSystemMetrics(SM_CXSCREEN);
-            int screenHeight = GetSystemMetrics(SM_CYSCREEN);
-
-            // Set the window width and height
-            int windowWidth = 300;
-            int windowHeight = 180;
-
-            // Calculate the position to center the window
-            int xPos = (screenWidth - windowWidth) / 2;
-            int yPos = (screenHeight - windowHeight) / 2;
-
-            // Remove the title bar and disable resizing
-            LONG style = GetWindowLong(hwnd, GWL_STYLE);
-            style &= ~(WS_CAPTION | WS_SIZEBOX); // Remove title bar and resize box
-            SetWindowLong(hwnd, GWL_STYLE, style);
-
-            HBRUSH hBrush = CreateSolidBrush(RGB(45, 45, 48));
-            SetClassLongPtr(hwnd, GCLP_HBRBACKGROUND, (LONG_PTR)hBrush);
-
-            // Set the window position to the center of the screen
-            SetWindowPos(hwnd, HWND_TOP, xPos, yPos, windowWidth, windowHeight, SWP_NOZORDER);
-
-            // Create the UI controls without a title bar
-            processNameEdit = CreateWindow("EDIT", "GTA5.exe", WS_VISIBLE | WS_CHILD | WS_BORDER | ES_AUTOHSCROLL, 120, 40, 150, 20, hwnd, NULL, NULL, NULL);
-            CreateWindow("STATIC", "Process Name:", WS_VISIBLE | WS_CHILD, 10, 40, 100, 20, hwnd, NULL, NULL, NULL);
-
-            CreateWindow("STATIC", "Time (s):", WS_VISIBLE | WS_CHILD, 10, 70, 100, 20, hwnd, NULL, NULL, NULL);
-            timeEdit = CreateWindow("EDIT", "10", WS_VISIBLE | WS_CHILD | WS_BORDER | ES_AUTOHSCROLL, 120, 70, 150, 20, hwnd, NULL, NULL, NULL);
-
-            pauseButton = CreateWindow("BUTTON", "Pause", WS_VISIBLE | WS_CHILD | BS_OWNERDRAW, 10, 100, 100, 30, hwnd, (HMENU)1, NULL, NULL);
-
-            // Progress bar creation using CommCtrl
-            progressBar = CreateWindowEx(0, PROGRESS_CLASS, NULL, WS_VISIBLE | WS_CHILD | PBS_SMOOTH, 120, 100, 150, 30, hwnd, (HMENU)3, NULL, NULL);
-            SendMessage(progressBar, PBM_SETRANGE, 0, MAKELPARAM(0, PROGRESS_BAR_STEPS));
-            SendMessage(progressBar, PBM_SETSTEP, (WPARAM)1, 0);
-            SendMessage(progressBar, PBM_SETBKCOLOR, 0, (LPARAM)RGB(45, 45, 48));
-            SendMessage(progressBar, PBM_SETBARCOLOR, 0, (LPARAM)RGB(120, 81, 169));
-
-            CreateWindow("STATIC", "Made by CRAWNiiK", WS_VISIBLE | WS_CHILD | SS_CENTER, 0, 140, 300, 20, hwnd, NULL, NULL, NULL);
-
-            // Create the "Process Pauser" text and center it
-            titleText = CreateWindow("STATIC", "Process Pauser", WS_VISIBLE | WS_CHILD | SS_CENTER, 0, 10, 250, 20, hwnd, NULL, NULL, NULL);
-
-            // Create custom "X" button for closing the window with the custom drawing
-            closeButton = CreateWindow("BUTTON", "X", WS_VISIBLE | WS_CHILD | BS_OWNERDRAW, 270, 10, 20, 20, hwnd, (HMENU)2, NULL, NULL);
-            break;
-        }
+			// Get the screen width and height
+			int screenWidth = GetSystemMetrics(SM_CXSCREEN);
+			int screenHeight = GetSystemMetrics(SM_CYSCREEN);
+		
+			// Set the window width and height
+			int windowWidth = 300;
+			int windowHeight = 180;
+		
+			// Calculate the position to center the window
+			int xPos = (screenWidth - windowWidth) / 2;
+			int yPos = (screenHeight - windowHeight) / 2;
+		
+			// Remove the title bar and disable resizing
+			LONG style = GetWindowLong(hwnd, GWL_STYLE);
+			style &= ~(WS_CAPTION | WS_SIZEBOX); // Remove title bar and resize box
+			SetWindowLong(hwnd, GWL_STYLE, style);
+		
+			HBRUSH hBrush = CreateSolidBrush(RGB(45, 45, 48));
+			SetClassLongPtr(hwnd, GCLP_HBRBACKGROUND, (LONG_PTR)hBrush);
+		
+			// Set the window position to the center of the screen
+			SetWindowPos(hwnd, HWND_TOP, xPos, yPos, windowWidth, windowHeight, SWP_NOZORDER);
+		
+			// Create rounded corners for the window
+			HRGN hRgn = CreateRoundRectRgn(0, 0, windowWidth, windowHeight, 20, 20); // 20 is the corner radius
+			SetWindowRgn(hwnd, hRgn, TRUE); // Apply the rounded region to the window
+		
+			// Create the UI controls without a title bar
+			processNameEdit = CreateWindow("EDIT", "GTA5.exe", WS_VISIBLE | WS_CHILD | WS_BORDER | ES_AUTOHSCROLL, 120, 40, 150, 20, hwnd, NULL, NULL, NULL);
+			CreateWindow("STATIC", "Process Name:", WS_VISIBLE | WS_CHILD, 10, 40, 100, 20, hwnd, NULL, NULL, NULL);
+		
+			CreateWindow("STATIC", "Time (s):", WS_VISIBLE | WS_CHILD, 10, 70, 100, 20, hwnd, NULL, NULL, NULL);
+			timeEdit = CreateWindow("EDIT", "10", WS_VISIBLE | WS_CHILD | WS_BORDER | ES_AUTOHSCROLL, 120, 70, 150, 20, hwnd, NULL, NULL, NULL);
+		
+			pauseButton = CreateWindow("BUTTON", "Pause", WS_VISIBLE | WS_CHILD | BS_OWNERDRAW, 10, 100, 100, 30, hwnd, (HMENU)1, NULL, NULL);
+		
+			// Progress bar creation using CommCtrl
+			progressBar = CreateWindowEx(0, PROGRESS_CLASS, NULL, WS_VISIBLE | WS_CHILD | PBS_SMOOTH, 120, 100, 150, 30, hwnd, (HMENU)3, NULL, NULL);
+			SendMessage(progressBar, PBM_SETRANGE, 0, MAKELPARAM(0, PROGRESS_BAR_STEPS));
+			SendMessage(progressBar, PBM_SETSTEP, (WPARAM)1, 0);
+			SendMessage(progressBar, PBM_SETBKCOLOR, 0, (LPARAM)RGB(45, 45, 48));
+			SendMessage(progressBar, PBM_SETBARCOLOR, 0, (LPARAM)RGB(120, 81, 169));
+		
+			CreateWindow("STATIC", "Made by CRAWNiiK", WS_VISIBLE | WS_CHILD | SS_CENTER, 0, 140, 300, 20, hwnd, NULL, NULL, NULL);
+		
+			// Create the "Process Pauser" text and center it
+			titleText = CreateWindow("STATIC", "Process Pauser", WS_VISIBLE | WS_CHILD | SS_CENTER, 0, 10, 250, 20, hwnd, NULL, NULL, NULL);
+		
+			// Create custom "X" button for closing the window with the custom drawing
+			closeButton = CreateWindow("BUTTON", "X", WS_VISIBLE | WS_CHILD | BS_OWNERDRAW, 270, 10, 20, 20, hwnd, (HMENU)2, NULL, NULL);
+			break;
+		}
 
         case WM_CTLCOLORSTATIC: {
 			HDC hdcStatic = (HDC)wParam;
