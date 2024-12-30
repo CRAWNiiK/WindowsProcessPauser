@@ -2,13 +2,12 @@
 
 ## Overview
 
-**Process Pauser** is a Windows application that allows users to pause or resume processes by their name (e.g., `GTA5.exe`). The user can specify the time duration for which the process will be paused. The application provides a simple graphical user interface (GUI) for controlling the pausing and resuming of processes, along with a progress bar that shows the countdown.
+**Process Pauser** is a Windows application that allows users to pause processes by their name (e.g., `GTA5.exe`). The user can specify the time duration for which the process will be paused. The application provides a simple graphical user interface (GUI) for controlling the pausing of processes, along with a progress bar that shows the countdown.
 
 ## Features
 
-- **Pause/Resume Process**: Suspend and resume processes with a simple button click.
+- **Pause/Resume Process**: Suspend processes with a simple button click.
 - **Progress Bar**: A progress bar showing the remaining time until the process is resumed.
-- **Custom Buttons**: Custom-drawn buttons for pausing and closing the application.
 - **UI Controls**: Editable text fields for specifying the process name and the time to pause.
 
 ## Requirements
