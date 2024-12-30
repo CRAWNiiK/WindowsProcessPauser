@@ -1,5 +1,5 @@
 # Process Pauser
-
+`g++ main.cpp resource.o -o ProcessPauser.exe -mwindows -lcomctl32`
 ## Overview
 
 **Process Pauser** is a Windows application that allows users to pause or resume processes by their name (e.g., `GTA5.exe`). The user can specify the time duration for which the process will be paused. The application provides a simple graphical user interface (GUI) for controlling the pausing and resuming of processes, along with a progress bar that shows the countdown.
