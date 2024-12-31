@@ -17,7 +17,7 @@ I also found out that when you are stuck in the clouds in GTAO trying to join a 
 
 ## Requirements
 
-- **Windows OS**: Windows 7 or newer (tested on Windows 10)
+- **Windows OS**: Windows 7 or newer (tested on Windows 11)
 - **Libraries**:
   - `windows.h`
   - `tlhelp32.h`
