@@ -1,5 +1,5 @@
 # Process Pauser
-
+![Screenshot of Process Pauser](images/screen.png)
 ## Overview
 
 **Process Pauser** is a Windows application that allows users to pause processes by their name (e.g., `GTA5.exe`). The user can specify the time duration for which the process will be paused. The application provides a simple graphical user interface (GUI) for controlling the pausing of processes, along with a progress bar that shows the countdown.
