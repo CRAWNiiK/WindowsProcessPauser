@@ -25,9 +25,15 @@ I also found out that when you are stuck in the clouds in GTAO trying to join a 
 
 ## How to Compile
 
+1. Install MinGW
+2. Open CMD and navigate to the directory containing main.cpp
+3. `g++ main.cpp resource.o -o ProcessPauser.exe -mwindows -lcomctl32`
+
+or
+
 1. Open the script in your preferred C++ IDE (e.g., Visual Studio, Code::Blocks).
 2. Ensure that `comctl32.lib` is linked (needed for custom control elements).
-3. Compile and run the application. (`g++ main.cpp resource.o -o ProcessPauser.exe -mwindows -lcomctl32`)
+3. Compile and run the application.
 
 ## Usage
 
