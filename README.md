@@ -4,6 +4,11 @@
 
 **Process Pauser** is a Windows application that allows users to pause processes by their name (e.g., `GTA5.exe`). The user can specify the time duration for which the process will be paused. The application provides a simple graphical user interface (GUI) for controlling the pausing of processes, along with a progress bar that shows the countdown.
 
+##Intended Purpose
+
+In GTA Online and Red Dead Online, if you suspend your game process for 10 seconds, it will seemingly "boot" everyone from your lobby and give you a fresh public lobby. 
+I also found out that when you are stuck in the clouds in GTAO trying to join a game, if you use the **Process Pauser**, it will load you in much quicker. But it will still be a solo public lobby. 
+
 ## Features
 
 - **Pause/Resume Process**: Suspend processes with a simple button click.
