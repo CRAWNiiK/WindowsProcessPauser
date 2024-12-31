@@ -59,12 +59,21 @@ DWORD FindProcessId(const std::string& processName) {
 
 // Custom drawing for buttons (custom draw)
 void DrawButton(HDC hdc, RECT* rect, BOOL isPressed, BOOL isFocused) {
+    // Adjust the radius for rounded corners
+    int cornerRadius = 10;
+
+    // Create a brush with a color depending on whether the button is pressed
     HBRUSH hBrush = CreateSolidBrush(isPressed ? RGB(120, 81, 169) : RGB(57, 57, 60)); // Change color here
-    FillRect(hdc, rect, hBrush);
+    SelectObject(hdc, hBrush);
+    RoundRect(hdc, rect->left, rect->top, rect->right, rect->bottom, cornerRadius, cornerRadius);
     DeleteObject(hBrush);
 
-    SetTextColor(hdc, RGB(255, 255, 255)); // Text color
+    // Set the text color
+    SetTextColor(hdc, RGB(255, 255, 255)); 
     SetBkMode(hdc, TRANSPARENT);
+
+    // Draw the button text
+    DrawText(hdc, pauseButtonText.c_str(), -1, rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
 }
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
@@ -85,11 +94,24 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
             return TRUE;  // Custom drawing handled for Pause button
         }
         else if (dis->CtlID == 2) {  // Close button (X)
-            // Define custom drawing for the "X" button here
-            FillRect(dis->hDC, &dis->rcItem, CreateSolidBrush(RGB(255, 0, 0))); // Red background for the "X" button
-            DrawText(dis->hDC, "X", -1, &dis->rcItem, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
-            return TRUE;  // Custom drawing handled for "X" button
-        }
+			// Define custom drawing for the "X" button here
+			HBRUSH hBrush = CreateSolidBrush(RGB(255, 0, 0)); // Red background for the "X" button
+			SelectObject(dis->hDC, hBrush);
+		
+			// Set the radius for the rounded corners
+			int cornerRadius = 10;
+			RoundRect(dis->hDC, dis->rcItem.left, dis->rcItem.top, dis->rcItem.right, dis->rcItem.bottom, cornerRadius, cornerRadius);
+		
+			// Draw the "X" text in the center
+			SetTextColor(dis->hDC, RGB(255, 255, 255)); // White text color
+			SetBkMode(dis->hDC, TRANSPARENT);
+			DrawText(dis->hDC, "X", -1, &dis->rcItem, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+			
+			// Cleanup
+			DeleteObject(hBrush);
+		
+			return TRUE;  // Custom drawing handled for "X" button
+		}
     }
 
     switch (uMsg) {
