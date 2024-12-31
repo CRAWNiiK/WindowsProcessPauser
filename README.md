@@ -1,5 +1,5 @@
 # Process Pauser
-![broken screenshot]([URL](https://private-user-images.githubusercontent.com/123910716/399387535-1094246a-bd6b-4845-bf54-60097acf86fb.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzU2MDM3MzgsIm5iZiI6MTczNTYwMzQzOCwicGF0aCI6Ii8xMjM5MTA3MTYvMzk5Mzg3NTM1LTEwOTQyNDZhLWJkNmItNDg0NS1iZjU0LTYwMDk3YWNmODZmYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjMxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIzMVQwMDAzNThaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01YTZlMjA4YmZhZGEyOGI4ZGRiMGIwZmFiZjMyZTFmOTFkOWJhNmY0ZjBiY2E4NTkzOTc3YmVjOWI4MThlYjA5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.K_UNmGJFT-KENCgpAsJYoV6WfaN-IYdHj0EWuCFEclc))
+
 ## Overview
 
 **Process Pauser** is a Windows application that allows users to pause processes by their name (e.g., `GTA5.exe`). The user can specify the time duration for which the process will be paused. The application provides a simple graphical user interface (GUI) for controlling the pausing of processes, along with a progress bar that shows the countdown.
